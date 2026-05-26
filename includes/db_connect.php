@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set('Asia/Manila'); // Or your correct timezone
-$servername = "sql308.infinityfree.com"; // Your Online Hostname
-$username = "if0_41094727";             // Your Online Username
-$password = "ZoxuESaPGM7X083";        // Your Online Password
-$dbname = "if0_41094727_peerlink";      // Your Online Database Name
+$servername = "bhvkf1aoswgiodogcvyx-mysql.services.clever-cloud.com"; // Your Online Hostname
+$username = "u3m26r6ajgfgtuka";             // Your Online Username
+$password = "dVLj6BgUDOeMJTadX6Cr";        // Your Online Password
+$dbname = "bhvkf1aoswgiodogcvyx";      // Your Online Database Name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
