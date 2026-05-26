@@ -2,6 +2,9 @@
 // Set the working directory to the project root so all relative includes work perfectly
 chdir(dirname(__DIR__));
 
+// Load and register the database session handler before any page runs session_start()
+require_once 'includes/session_helper.php';
+
 $request = $_SERVER['REQUEST_URI'];
 $path = parse_url($request, PHP_URL_PATH);
 
