@@ -14,15 +14,18 @@ class DatabaseSessionHandler implements SessionHandlerInterface {
         $this->db = $dbConnection;
     }
 
-    public function open($savePath, $sessionName) {
+    #[\ReturnTypeWillChange]
+    public function open(string $savePath, string $sessionName): bool {
         return true;
     }
 
-    public function close() {
+    #[\ReturnTypeWillChange]
+    public function close(): bool {
         return true;
     }
 
-    public function read($id) {
+    #[\ReturnTypeWillChange]
+    public function read(string $id): string|false {
         if (!$this->db) {
             return '';
         }
@@ -41,7 +44,8 @@ class DatabaseSessionHandler implements SessionHandlerInterface {
         return '';
     }
 
-    public function write($id, $data) {
+    #[\ReturnTypeWillChange]
+    public function write(string $id, string $data): bool {
         if (!$this->db) {
             return false;
         }
@@ -57,7 +61,8 @@ class DatabaseSessionHandler implements SessionHandlerInterface {
         return false;
     }
 
-    public function destroy($id) {
+    #[\ReturnTypeWillChange]
+    public function destroy(string $id): bool {
         if (!$this->db) {
             return false;
         }
@@ -72,7 +77,8 @@ class DatabaseSessionHandler implements SessionHandlerInterface {
         return false;
     }
 
-    public function gc($maxlifetime) {
+    #[\ReturnTypeWillChange]
+    public function gc(int $maxlifetime): int|false {
         if (!$this->db) {
             return false;
         }
