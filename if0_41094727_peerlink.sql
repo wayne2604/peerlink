@@ -12,6 +12,15 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `bookings`;
+DROP TABLE IF EXISTS `listener_profiles`;
+DROP TABLE IF EXISTS `messages`;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `sessions`;
+SET FOREIGN_KEY_CHECKS = 1;
+
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +37,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `bookings`
 --
 
-CREATE TABLE `bookings` (
+CREATE TABLE IF NOT EXISTS `bookings` (
   `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `listener_id` int(11) NOT NULL,
@@ -75,7 +84,7 @@ INSERT INTO `bookings` (`id`, `student_id`, `listener_id`, `form_name`, `form_gr
 -- Table structure for table `listener_profiles`
 --
 
-CREATE TABLE `listener_profiles` (
+CREATE TABLE IF NOT EXISTS `listener_profiles` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `alias` varchar(50) DEFAULT 'New Listener',
@@ -110,7 +119,7 @@ INSERT INTO `listener_profiles` (`id`, `user_id`, `alias`, `specialty`, `avatar`
 -- Table structure for table `messages`
 --
 
-CREATE TABLE `messages` (
+CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL,
   `booking_id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
@@ -184,7 +193,7 @@ INSERT INTO `messages` (`id`, `booking_id`, `sender_id`, `message`, `created_at`
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -290,7 +299,7 @@ ALTER TABLE `listener_profiles`
 -- Table structure for table `sessions`
 --
 
-CREATE TABLE `sessions` (
+CREATE TABLE IF NOT EXISTS `sessions` (
   `id` varchar(255) NOT NULL,
   `access` int(11) NOT NULL,
   `data` text NOT NULL,
